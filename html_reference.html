@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Elements Preview</title>
+  <style>
+    :root {
+      --bg-color: #f9f9f9;
+      --text-color: #333;
+      --card-bg: #fff;
+      --divider-color: #ddd;
+    }
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --card-bg: #1e1e1e;
+      --divider-color: #333;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .btn-primary { background: #007bff; color: #fff; }
+    .btn-secondary { background: #6c757d; color: #fff; }
+    .btn-success { background: #28a745; color: #fff; }
+    .btn-danger { background: #dc3545; color: #fff; }
+    .card {
+      border: 1px solid var(--divider-color);
+      border-radius: 5px;
+      background: var(--card-bg);
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    form {
+      margin-top: 20px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid var(--divider-color);
+      border-radius: 5px;
+      font-size: 1rem;
+      background: var(--card-bg);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    label {
+      font-weight: bold;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid var(--divider-color);
+      text-align: left;
+    }
+    th {
+      background: var(--card-bg);
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .divider {
+      margin: 20px 0;
+      border-top: 2px solid var(--divider-color);
+    }
+    .theme-toggle {
+      margin: 20px 0;
+      text-align: right;
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="container">
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()">Toggle Dark/Light Theme</button>
+    </div>
+
+    <h1>UI Elements Preview</h1>
+
+    <h2>Buttons</h2>
+    <button class="btn-primary">Primary</button>
+    <button class="btn-secondary">Secondary</button>
+    <button class="btn-success">Success</button>
+    <button class="btn-danger">Danger</button>
+
+    <div class="divider"></div>
+
+    <h2>Cards</h2>
+    <div class="card">
+      <h3>Card Title</h3>
+      <p>This is a simple card with some content inside.</p>
+      <button class="btn-primary">Card Button</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <h2>Forms</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
+
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Enter your message"></textarea>
+
+      <label for="gender">Gender</label>
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <button class="btn-success" type="submit">Submit</button>
+    </form>
+
+    <div class="divider"></div>
+
+    <h2>Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Occupation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>30</td>
+          <td>Engineer</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Smith</td>
+          <td>28</td>
+          <td>Designer</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="divider"></div>
+
+    <h2>Links</h2>
+    <a href="#">This is a link</a>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', currentTheme === 'light' ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>

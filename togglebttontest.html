@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle UI</title>
+  <style>
+    /* Base styling for the toggle */
+    .toggle-container {
+      display: inline-block;
+      position: relative;
+      width: 50px;
+      height: 25px;
+    }
+
+    /* Hide the checkbox */
+    .toggle-checkbox {
+      display: none;
+    }
+
+    /* Styling for the toggle background */
+    .toggle-label {
+      background-color: #ccc;
+      border-radius: 25px;
+      cursor: pointer;
+      display: inline-block;
+      height: 100%;
+      position: relative;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+
+    /* Circle inside the toggle */
+    .toggle-circle {
+      background-color: white;
+      border-radius: 50%;
+      height: 21px;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s;
+      width: 21px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Active state */
+    .toggle-checkbox:checked+.toggle-label {
+      background-color: #4caf50;
+    }
+
+    .toggle-checkbox:checked+.toggle-label .toggle-circle {
+      transform: translateX(25px);
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div class="toggleUI">
+    <div class="toggle-container">
+      <input type="checkbox" id="toggle" class="toggle-checkbox" />
+      <label for="toggle" class="toggle-label">
+        <span class="toggle-circle"></span>
+      </label>
+    </div>
+  </div>
+
+
+  <div class="toggleUI2">
+    <div class="toggle-container">
+      <input type="checkbox" id="toggle" class="toggle-checkbox" />
+      <label for="toggle" class="toggle-label">
+        <span class="toggle-circle">p</span>
+      </label>
+    </div>
+  </div>
+
+</body>
+
+</html>

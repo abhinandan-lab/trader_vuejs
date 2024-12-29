@@ -1,6 +1,24 @@
-import './assets/main.css'
+import '@/assets/login.css';
 
-import { createApp } from 'vue'
-import App from './App.vue'
+import 'primeicons/primeicons.css';
 
-createApp(App).mount('#app')
+import router from './router';
+
+
+import { createApp } from 'vue';
+import App from './App.vue';
+
+// Create the app instance
+const app = createApp(App);
+
+
+app.use(router);
+
+
+
+// Global theme state
+const themeState = { isDark: false }; // Shared state
+app.provide('theme', themeState); // Provide it globally
+
+// Mount the app
+app.mount('#app');

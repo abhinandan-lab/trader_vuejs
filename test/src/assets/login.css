@@ -1,4 +1,4 @@
-@import './base_test.css';
+@import './base.css';
 .form_control {
   margin-top: 1.4rem;
 }
@@ -11,6 +11,7 @@
   justify-content: space-between;
   align-items: center;
   max-width: var(--display_width);
+  margin: auto;
 }
 .top_header .toggleUI {
   transform: scale(0.8);
@@ -22,6 +23,7 @@
 }
 
 .register {
+  margin: auto;
   padding: 2rem;
   max-width: 700px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -91,6 +93,9 @@
   width: 100%;
 }
 .toggleUI .toggle-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: white;
   border-radius: 50%;
   height: 21px;
@@ -105,4 +110,4 @@
 }
 .toggleUI .toggle-checkbox:checked + .toggle-label .toggle-circle {
   transform: translateX(25px);
-}/*# sourceMappingURL=test_main.css.map */
+}/*# sourceMappingURL=login.css.map */

@@ -1,5 +1,4 @@
-@import './base_test.css';
-
+@import './base.css';
 
 
 
@@ -15,6 +14,7 @@
     justify-content: space-between;
     align-items: center;
     max-width: var(--display_width);
+    margin: auto;
 
 
     .toggleUI {
@@ -28,6 +28,7 @@
 
 
 .register {
+    margin: auto;
     padding: 2rem;
     max-width: 700px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -114,6 +115,9 @@
     }
 
     .toggle-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-color: white;
         border-radius: 50%;
         height: 21px;

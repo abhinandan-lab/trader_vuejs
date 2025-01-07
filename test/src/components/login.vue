@@ -23,7 +23,7 @@
           <div class="profile_circle">
             <img src="https://placehold.co/150" alt="profile pic">
 
-            <button>pe</button>
+            <button class="edit"><i class="pi pi-pencil"></i></button>
           </div>
         </div>
 
@@ -56,3 +56,21 @@
     </div>
   </div>
 </template>
+
+
+
+
+<style scoped>
+
+  .edit {
+    border-radius: 50%;
+    /* height: 40; */
+    /* margin: 0; */
+    padding: 1rem;
+
+
+  }
+
+
+
+</style>

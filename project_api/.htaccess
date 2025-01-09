@@ -1,0 +1,17 @@
+# Deny access to sensitive files
+<!-- DURING LIVE SITE -->
+<!-- <FilesMatch "(config\.php|constants\.php|initDatabase\.php)">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch> -->
+
+<!-- DURING TESTING SITE -->
+<FilesMatch "(config\.php|constants\.php)">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Redirect all requests to the public folder
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ /public/$1 [L]

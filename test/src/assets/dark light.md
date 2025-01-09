@@ -1,6 +1,22 @@
 Hi I am working on vue js project with composition api and in script to be short form method like <script setup>....</script 
 
 
+
+hostinger db credentials
+
+sql user 
+u569028862_trader
+sql pass
+|p|7J4#$Rb7
+db name
+u569028862_trader
+
+
+
+
+
+
+
 I want to apply a feature of dark and light theme 
 
 how my dark and light theme colors are managed is 

@@ -54,6 +54,9 @@
   margin: 0;
   margin-left: 5px;
 }
+.password_flex button i {
+  font-size: 1rem;
+}
 
 .profile_circle {
   display: flex;

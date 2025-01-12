@@ -69,6 +69,9 @@ const handleSubmit = async () => {
 
       <div class="form_div">
 
+        <div class="right"></div>
+        <div class="left"></div>
+
         <div class="form_control">
           <div class="profile_circle">
             <img src="https://placehold.co/150" alt="profile pic">

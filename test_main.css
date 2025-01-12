@@ -34,6 +34,10 @@
   text-align: center;
   color: var(--text-color);
 }
+.register .form_div {
+  display: flex;
+  justify-content: space-between;
+}
 
 .submit_div {
   display: flex;

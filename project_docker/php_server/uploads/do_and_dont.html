@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP File Inclusion Security Best Practices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #444;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: square;
+        }
+        .dos, .donts {
+            margin-bottom: 20px;
+        }
+        .dos li, .donts li {
+            margin-bottom: 10px;
+        }
+        .example {
+            background-color: #f9f9f9;
+            border-left: 5px solid #4CAF50;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PHP File Inclusion Security Best Practices</h1>
+
+    <p>File inclusion vulnerabilities can allow attackers to execute arbitrary code on your server. Here are the dos and don'ts for securely handling `include()` and `require()` in PHP:</p>
+
+    <div class="dos">
+        <h2>Dos:</h2>
+        <ul>
+            <li><strong>Use a whitelist of allowed files:</strong> Only include files that are in a predefined list.</li>
+            <div class="example">
+                <pre><code>
+$whitelistedPages = ['home', 'about', 'contact'];
+$page = $_GET['page'];
+if (in_array($page, $whitelistedPages)) {
+    include($page . '.php');
+} else {
+    echo "Invalid page!";
+}
+                </code></pre>
+            </div>
+
+            <li><strong>Use absolute file paths:</strong> Always use full paths to prevent path traversal attacks.</li>
+            <div class="example">
+                <pre><code>
+$baseDir = __DIR__ . '/pages/';
+$page = $_GET['page'];
+$file = $baseDir . basename($page) . '.php';
+if (file_exists($file)) {
+    include($file);
+} else {
+    echo "File not found!";
+}
+                </code></pre>
+            </div>
+
+            <li><strong>Use `require_once()` or `include_once()`:</strong> Prevent multiple inclusions of the same file.</li>
+            <div class="example">
+                <pre><code>
+require_once('somefile.php');
+                </code></pre>
+            </div>
+
+            <li><strong>Sanitize and validate user input:</strong> Always sanitize user input before including files. For example, filter and validate input to ensure no special characters or malicious code is present.</li>
+            <div class="example">
+                <pre><code>
+$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_STRING);
+if (preg_match('/^[a-zA-Z0-9_-]+$/', $page)) {
+    include($page . '.php');
+} else {
+    echo "Invalid input!";
+}
+                </code></pre>
+            </div>
+
+            <li><strong>Use `realpath()` to resolve file paths:</strong> Ensure the file is in the correct directory and prevent directory traversal.</li>
+            <div class="example">
+                <pre><code>
+$baseDir = __DIR__ . '/pages/';
+$page = $_GET['page'];
+$file = realpath($baseDir . basename($page) . '.php');
+if ($file && strpos($file, $baseDir) === 0 && file_exists($file)) {
+    include($file);
+} else {
+    echo "File not found or invalid path!";
+}
+                </code></pre>
+            </div>
+
+            <li><strong>Disable Remote File Inclusion (RFI):</strong> If you do not need it, disable the `allow_url_include` directive in `php.ini` to prevent external files from being included.</li>
+            <div class="example">
+                <pre><code>
+allow_url_include = Off
+                </code></pre>
+            </div>
+
+            <li><strong>Implement error handling and logging:</strong> Gracefully handle errors without exposing sensitive information to users.</li>
+            <div class="example">
+                <pre><code>
+try {
+    include($file);
+} catch (Exception $e) {
+    error_log($e->getMessage());
+    echo "An error occurred. Please try again later.";
+}
+                </code></pre>
+            </div>
+        </ul>
+    </div>
+
+    <div class="donts">
+        <h2>Don'ts:</h2>
+        <ul>
+            <li><strong>Don't pass user input directly into `include()` or `require()`:</strong> Never use user input directly in the file path.</li>
+            <div class="example">
+                <pre><code>
+$page = $_GET['page'];
+include($page); // Vulnerable to file inclusion attacks
+                </code></pre>
+            </div>
+
+            <li><strong>Don't allow arbitrary file paths:</strong> Avoid letting users specify arbitrary file paths (e.g., `../../etc/passwd`).</li>
+
+            <li><strong>Don't use insecure methods like `eval()` or dynamic code execution:</strong> Never execute PHP code that comes from user input directly.</li>
+
+            <li><strong>Don't disable PHP’s built-in security features:</strong> Always keep important settings like `allow_url_include` disabled and use `open_basedir` where possible to limit file access.</li>
+
+            <li><strong>Don't expose detailed error messages:</strong> Never display detailed error messages or stack traces to users. This could reveal valuable information about your system.</li>
+        </ul>
+    </div>
+
+</body>
+</html>

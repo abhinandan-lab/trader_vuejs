@@ -1,0 +1,39 @@
+/your-project
+├── api/                # API related classes and functionality
+│   ├── Users.php       # Users class containing methods for user actions (getAllUsers, getUserById, etc.)
+│   ├── Profiles.php    # Profiles class containing methods for profile-related actions
+│   ├── Posts.php       # Posts class for post-related actions
+│   └── ...             # Other API functionality like comments, likes, etc.
+├── config/             # Configuration files like database connections or settings
+│   └── db.php          # Database connection details
+├── index.php           # Entry point (not inside /public/ but directly accessible)
+├── .htaccess           # For URL rewriting and routing security (if using Apache)
+├── .gitignore          # For ignoring unnecessary files in version control
+└── logs/   
+
+
+
+<!-- all routing are passed to index.php -->
+RewriteEngine On
+RewriteBase /your-project/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+
+<!-- prevent direct access to this folders -->
+<Directory "/api">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+<Directory "/config">
+    Order Allow,Deny
+    Deny from all
+</Directory>
+
+
+<!-- prevents to run php scripts in folders -->
+<Directory "/uploads">
+    php_flag engine off
+</Directory>

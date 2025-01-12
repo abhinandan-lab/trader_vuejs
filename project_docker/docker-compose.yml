@@ -3,7 +3,7 @@ services:
   web:
     build: ./docker/web
     volumes:
-      - ./:/var/www/html/
+      - ./php_server:/var/www/html/
     ports:
       - 80:80
   

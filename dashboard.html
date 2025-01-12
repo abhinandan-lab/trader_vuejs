@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test_main.css">
+</head>
+
+<body>
+
+
+    <!-- latest header -->
+    <div class="full_width bg_card">
+        <div class="top_header ">
+            <p> {{ welcome username }} </p>
+
+
+            <div class="logged_user">
+                <button class="btn-common">settings</button>
+                <button class="btn-common">logout</button>
+                <div class="profilepic">
+                    <img src="https://placehold.co/30" alt="user profile">
+                </div>
+
+                <div class="themebox">
+                    <!-- dont delete the below empty span we need it to show border left -->
+                    <span></span>
+                    <span>icon</span>
+
+                    <div class="toggleUI"> <span class="icon"><i class="pi pi-moon"></i></span>
+                        <div @change="toggleTheme" class="toggle-container">
+                            <input type="checkbox" id="toggle" class="toggle-checkbox" v-model="theme.isDark" />
+                            <label for="toggle" class="toggle-label">
+                                <span class="toggle-circle">
+                                    <!-- <i :class="theme.isDark ? 'pi pi-moon' : 'pi pi-sun'"></i> -->
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="full_width dashboard">
+        <div class="working_div bg_card ">
+
+            <div class="dashboard_header">
+
+
+                <div class="btn_div">
+                    <h2 class="active btn-plain"><span>Dashboard</span> </h2>
+                    <h2 class=" btn-plain"><span>Trades</span> </h2>
+                </div>
+
+
+                <div class="left">
+                    <p>my strategy name </p><button>change</button>
+                </div>
+            </div>
+
+            <div class="dashboard_container">
+                <div class="dashboard_tab bg_color">
+
+
+                    <div class="flex_container">
+                        <div class="item bg_card">
+                            <p class="tiitle">
+                                Expectency
+                            </p>
+
+                            <p class="value">
+                                80%
+                            </p>
+                        </div>
+
+                        <div class="item bg_card">
+                            <p class="tiitle">
+                                Expectency
+                            </p>
+
+                            <p class="value">
+                                80%
+                            </p>
+                        </div>
+
+
+                        <div class="item bg_card">
+                            <p class="tiitle">
+                                Expectency
+                            </p>
+
+                            <p class="value">
+                                80%
+                            </p>
+                        </div>
+
+
+                        <div class="item bg_card">
+                            <p class="tiitle">
+                                Expectency
+                            </p>
+
+                            <p class="value">
+                                80%
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div style="display: none;" class="trades_tab">
+                    isme dikhayenge databale stats trade lists
+
+                    https://primevue.org/datatable/
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

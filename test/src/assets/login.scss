@@ -27,36 +27,8 @@
 }
 
 
-.register {
-    margin: auto;
-    padding: 2rem;
-    max-width: 700px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    border-radius: 10px;
-    margin-top: 2rem;
 
 
-    h1 {
-        text-align: center;
-        color: var(--text-color);
-    }
-
-}
-
-
-.submit_div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-
-    .btn-primary {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-}
 
 .password_flex {
     display: flex;
@@ -71,28 +43,6 @@
     }
 }
 
-
-.profile_circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    margin: auto;
-
-    position: relative;
-
-    img {
-        border-radius: 50%;
-    }
-
-    button {
-
-        position: absolute;
-        right: 0;
-        bottom: 0;
-
-    }
-}
 
 
 .toggleUI {

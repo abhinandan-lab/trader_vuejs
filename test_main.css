@@ -109,4 +109,134 @@
 }
 .toggleUI .toggle-checkbox:checked + .toggle-label .toggle-circle {
   transform: translateX(25px);
+}
+
+.top_header {
+  width: var(--display_width);
+  margin: auto;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+}
+.top_header .logged_user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+.top_header .logged_user button {
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin: 0;
+}
+.top_header .logged_user .profilepic {
+  display: flex;
+  align-items: center;
+}
+.top_header .logged_user .profilepic img {
+  border-radius: 50%;
+}
+.top_header .logged_user .themebox {
+  display: flex;
+  border-left: 1px solid;
+  padding-left: 0.6rem;
+}
+
+.homepage, .dashboard {
+  margin-top: 1rem;
+  color: var(--text-color);
+}
+.homepage .working_div, .dashboard .working_div {
+  width: var(--display_width);
+  margin: auto;
+  padding: 0.6rem;
+}
+.homepage .working_div h1, .dashboard .working_div h1 {
+  margin-bottom: 1rem;
+}
+.homepage .working_div .strategies, .dashboard .working_div .strategies {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.homepage .working_div .strategies .item, .dashboard .working_div .strategies .item {
+  display: flex;
+  border-left: 10px solid black;
+  width: 100%;
+}
+.homepage .working_div .strategies .item > div, .dashboard .working_div .strategies .item > div {
+  flex: 1;
+  align-items: center;
+  display: flex;
+}
+.homepage .working_div .strategies .item > div h2, .dashboard .working_div .strategies .item > div h2 {
+  margin: 0.6rem 0;
+  margin-left: 0.6rem;
+}
+.homepage .working_div .strategies .item .left, .dashboard .working_div .strategies .item .left {
+  background-color: rgb(206, 206, 206);
+  display: flex;
+  gap: 1rem;
+}
+.homepage .working_div .strategies .item .left .info_div, .dashboard .working_div .strategies .item .left .info_div {
+  background-color: #4caf50;
+}
+.homepage .working_div .strategies .item:hover, .dashboard .working_div .strategies .item:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  cursor: pointer;
+}
+
+.dashboard .working_div {
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+  border-radius: 8px;
+}
+.dashboard .working_div .dashboard_header {
+  justify-content: space-between;
+  display: flex;
+}
+.dashboard .working_div .dashboard_header .btn_div {
+  display: flex;
+  gap: 1rem;
+}
+.dashboard .working_div .dashboard_header .btn_div h2 {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  line-height: 1;
+  border-bottom: 1px solid transparent;
+}
+.dashboard .working_div .dashboard_header .left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.dashboard .working_div .dashboard_header .left p {
+  font-size: 1.2rem;
+}
+.dashboard .working_div .dashboard_header .left button {
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  margin: 0;
+}
+.dashboard .working_div .dashboard_container {
+  margin-top: 0.6rem;
+}
+.dashboard .working_div .dashboard_container .dashboard_tab, .dashboard .working_div .dashboard_container .trades_tab {
+  padding: 0.8rem;
+}
+.dashboard .working_div .dashboard_container .dashboard_tab .flex_container, .dashboard .working_div .dashboard_container .trades_tab .flex_container {
+  display: flex;
+  gap: 0.8rem;
+}
+.dashboard .working_div .dashboard_container .dashboard_tab .flex_container .item, .dashboard .working_div .dashboard_container .trades_tab .flex_container .item {
+  padding: 0.6rem 0.8rem;
+  border-radius: 4px;
+}
+.dashboard .working_div .dashboard_container .dashboard_tab .flex_container .item .value, .dashboard .working_div .dashboard_container .trades_tab .flex_container .item .value {
+  font-size: 1.4rem;
+  font-weight: lighter;
+  color: green;
+}
+.dashboard .working_div .dashboard_container .dashboard_tab .flex_container .item:hover, .dashboard .working_div .dashboard_container .trades_tab .flex_container .item:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }/*# sourceMappingURL=test_main.css.map */

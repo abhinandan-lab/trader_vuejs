@@ -340,3 +340,98 @@
     }
 
 } 
+
+
+.settings {
+    .error_message {
+        color: red;
+        text-align: center;
+      }
+      
+      .success_message {
+        color: green;
+        text-align: center;
+      }
+      
+      .edit {
+        border-radius: 50%;
+        padding: 1rem;
+        width: 2.4rem;
+        height: 2.4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .form_div {
+        display: flex;
+        gap: 2.6rem;
+      
+        .right {
+          width: 35%;
+          /* background-color: red; */
+        }
+      
+      
+        .left {
+          flex-grow: 1;
+        }
+      }
+      
+      
+      .submit_div {
+        display: flex;
+        /* justify-content: center; */
+        /* align-items: center; */
+      
+      
+        .btn-primary {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+      
+      .settings {
+        margin: auto;
+        padding: 2rem;
+        max-width: 700px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+      
+      
+        h1 {
+          text-align: center;
+          color: var(--text-color);
+        }
+      
+      }
+      
+      
+      
+      .profile_circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* width: fit-content; */
+        margin: auto;
+      
+        position: relative;
+      
+        img {
+          border-radius: 50%;
+          width: 85%;
+        }
+      
+        button {
+      
+          position: absolute;
+          right: 1.5rem;
+          bottom: 0;
+      
+        }
+      }
+      
+}

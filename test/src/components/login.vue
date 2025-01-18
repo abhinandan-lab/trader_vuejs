@@ -164,7 +164,7 @@ const handleFileChange = (event) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 .error_message {
   color: red;
   text-align: center;

@@ -1,21 +1,13 @@
 <script setup>
-import { defineProps } from 'vue';
-
+import { onMounted } from 'vue';
 import { inject } from 'vue';
 
-const theme = inject('theme');
+const themeData_local = inject('themeData');
 
 const toggleTheme = () => {
-  console.log("before toggle:", theme.isDark);
-
-  theme.isDark = !theme.isDark;
-
-  console.log("after toggle:", theme.isDark);
-
-  document.body.setAttribute('data-theme', theme.isDark ? 'light' : 'dark');
+  themeData_local.isDark = !themeData_local.isDark;
+  document.body.setAttribute('data-theme', themeData_local.isDark ? 'dark' : 'light');
 };
-
-
 
 defineProps({
   welcome_msg: {
@@ -23,34 +15,30 @@ defineProps({
     default: "Welcome to trader's journal",
   }
 });
+
+onMounted(() => {
+  document.body.setAttribute('data-theme', themeData_local.isDark ? 'dark' : 'light');
+});
 </script>
 
-
 <template>
-
   <div class="full_width bg_card">
-
-
     <div class="top_header">
-
-
-      <p> {{ welcome_msg }} </p>
-
-      <div class="toggleUI"> <span class="icon"><i class="pi pi-moon"></i></span>
-        <div @change="toggleTheme" class="toggle-container">
-          <input type="checkbox" id="toggle" class="toggle-checkbox" v-model="theme.isDark" />
+      <p>{{ welcome_msg }}</p>
+      <div class="toggleUI">
+        <div class="toggle-container">
+          <input type="checkbox" id="toggle" class="toggle-checkbox" v-model="themeData_local.isDark"
+            @click="toggleTheme" />
           <label for="toggle" class="toggle-label">
             <span class="toggle-circle">
-              <!-- <i :class="theme.isDark ? 'pi pi-moon' : 'pi pi-sun'"></i> -->
+              <i :class="themeData_local.isDark ? 'pi pi-moon' : 'pi pi-sun'"></i>
             </span>
           </label>
         </div>
       </div>
     </div>
-
   </div>
 </template>
-
 
 
 <style scoped>
@@ -58,4 +46,8 @@ defineProps({
   margin-right: 0.4rem;
 }
 
+
+.toggle-circle {
+  color: black;
+}
 </style>

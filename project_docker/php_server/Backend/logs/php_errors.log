@@ -1,0 +1,372 @@
+[18-Jan-2025 02:39:12 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:13 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:13 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:37 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:50 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:39:56 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:36 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:37 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:37 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:37 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:40:37 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:10) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:49:41 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:49:54 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:30 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:31 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:31 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:47 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:48 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:53 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:53 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:54 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:54 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:54 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:54 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:54 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:50:55 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:15 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:16 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:16 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:23 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:24 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:24 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:24 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:24 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:39 UTC] PHP Warning:  Undefined variable $route in /var/www/html/Backend/index.php on line 45
+[18-Jan-2025 02:51:39 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /var/www/html/Backend/index.php on line 60
+[18-Jan-2025 02:51:39 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:40 UTC] PHP Warning:  Undefined variable $route in /var/www/html/Backend/index.php on line 45
+[18-Jan-2025 02:51:40 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /var/www/html/Backend/index.php on line 60
+[18-Jan-2025 02:51:40 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:40 UTC] PHP Warning:  Undefined variable $route in /var/www/html/Backend/index.php on line 45
+[18-Jan-2025 02:51:40 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /var/www/html/Backend/index.php on line 60
+[18-Jan-2025 02:51:40 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:40 UTC] PHP Warning:  Undefined variable $route in /var/www/html/Backend/index.php on line 45
+[18-Jan-2025 02:51:40 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /var/www/html/Backend/index.php on line 60
+[18-Jan-2025 02:51:40 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:41 UTC] PHP Warning:  Undefined variable $route in /var/www/html/Backend/index.php on line 45
+[18-Jan-2025 02:51:41 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /var/www/html/Backend/index.php on line 60
+[18-Jan-2025 02:51:41 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:51:41 UTC] PHP Warning:  Undefined variable $route in /var/www/html/Backend/index.php on line 45
+[18-Jan-2025 02:51:41 UTC] PHP Deprecated:  preg_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated in /var/www/html/Backend/index.php on line 60
+[18-Jan-2025 02:51:41 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:45) in /var/www/html/Backend/index.php on line 55
+[18-Jan-2025 02:54:13 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:14) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:54:14 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:14) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:54:14 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:14) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:54:14 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:14) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:54:14 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:14) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:54:15 UTC] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at /var/www/html/Backend/index.php:14) in /var/www/html/Backend/index.php on line 58
+[18-Jan-2025 02:56:20 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:20
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:20 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:20 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:20 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:20 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:20 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:20 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:20 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:20 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:20 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:20 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:56:21 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:21
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:21 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:21 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:21 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:21 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:21 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:21 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:21 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:21 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:21 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:21 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:56:21 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:21
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:21 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:21 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:21 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:21 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:21 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:21 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:21 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:21 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:21 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:21 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:56:21 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:21
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:21 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:21 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:21 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:21 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:21 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:21 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:21 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:21 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:21 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:21 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:56:23 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:23
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:23 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:23 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:23 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:23 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:23 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:23 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:23 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:23 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:23 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:23 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:56:28 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:28
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:28 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:28 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:28 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:28 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:28 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:28 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:28 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:28 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:28 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:28 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:56:42 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:56:42
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:56:42 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:56:42 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:56:42 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:56:42 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:56:42 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:56:42 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:56:42 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:56:42 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:56:42 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:56:42 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:57:03 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:57:03
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:57:03 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:57:03 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:57:03 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:57:03 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:57:03 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:57:03 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:57:03 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:57:03 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:57:03 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:57:03 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:57:04 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:57:04
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:57:04 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:57:04 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:57:04 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:57:04 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:57:04 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:57:04 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:57:04 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:57:04 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:57:04 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:57:04 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:57:04 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:57:04
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:57:04 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:57:04 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:57:04 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:57:04 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:57:04 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:57:04 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:57:04 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:57:04 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:57:04 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:57:04 UTC] DEBUG: 404 - Endpoint not found
+[18-Jan-2025 02:57:04 UTC] DEBUG: Request Details: Array
+(
+    [timestamp] => 2025-01-18 02:57:04
+    [method] => GET
+    [uri] => /Backend/
+    [ip] => 172.18.0.1
+    [user-agent] => Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+)
+
+[18-Jan-2025 02:57:04 UTC] DEBUG: Raw Request URI = /Backend/
+[18-Jan-2025 02:57:04 UTC] DEBUG: Stripped URI = /Backend/
+[18-Jan-2025 02:57:04 UTC] DEBUG: Parsed Request URI = /Backend
+[18-Jan-2025 02:57:04 UTC] DEBUG: Available Routes = Array
+(
+    [/] => Array
+        (
+            [0] => home
+            [1] => welcome
+        )
+
+)
+
+[18-Jan-2025 02:57:04 UTC] DEBUG: Current Method = GET
+[18-Jan-2025 02:57:04 UTC] DEBUG: Current URI = /Backend
+[18-Jan-2025 02:57:04 UTC] DEBUG: Checking Route = /
+[18-Jan-2025 02:57:04 UTC] DEBUG: Matching URI '/Backend' with Route Pattern '#^/$#'
+[18-Jan-2025 02:57:04 UTC] DEBUG: Route did not match.
+[18-Jan-2025 02:57:04 UTC] DEBUG: 404 - Endpoint not found

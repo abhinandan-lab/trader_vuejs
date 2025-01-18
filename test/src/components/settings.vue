@@ -211,7 +211,7 @@ const handleFileChange = (event) => {
   </div>
 </template>
 
-<style>
+<style scoped>
 
 
 .confirm_delete {

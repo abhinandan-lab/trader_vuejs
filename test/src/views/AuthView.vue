@@ -7,6 +7,6 @@ import Settings from '@/components/settings.vue';
 
 <template>
 
-    <!-- <Login /> -->
+    <Login />
     <Settings />
 </template>

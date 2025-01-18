@@ -3,11 +3,14 @@ header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-# dont delete this
-// error_reporting(E_ALL);
-// ini_set('log_errors', '1');
-// ini_set('error_log', __DIR__ . '/logs/php_errors.log');
-// ini_set('display_errors', '1');
+
+require_once __DIR__ . '/config/constants.php';
+require_once __DIR__ . '/functions/Utils.php';
+
+error_reporting(E_ALL);
+ini_set('log_errors', '1');
+ini_set('error_log', __DIR__ . '/logs/php_errors.log');
+ini_set('display_errors', '1');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit;
@@ -16,20 +19,22 @@ logRequest();
 
 
 
-
-
-
-
-
-# classes to use
+# Classes and functions to call 
 require_once __DIR__ . '/api/home.php';
+require_once __DIR__ . '/api/auth.php';
 
-# define routes here
+
+
+
+# Routes
+
 $routes = [
     'GET' => [
         '/' => ['home', 'welcome'],
     ],
-    'POST' => [],
+    'POST' => [
+        '/login' => ['auth', 'login'],
+    ],
     'DELETE' => [],
 ];
 
@@ -41,13 +46,9 @@ $routes = [
 
 
 
-
-
-// dont change below anything
-
-
+$routes = prependBaseFolder($routes);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
-$requestUri = parseEndpoint($_SERVER['REQUEST_URI']) ?: '/'; // Default to '/' if no URI is provided
+$requestUri = parseEndpoint($_SERVER['REQUEST_URI']) ?: BASEFOLDER;
 $requestBody = json_decode(file_get_contents('php://input'), true);
 
 $routeParams = [];
@@ -56,8 +57,9 @@ $response = handleRequest($routes, $requestMethod, $requestUri, $requestBody, $r
 echo json_encode($response);
 
 function handleRequest($routes, $method, $uri, $body, &$routeParams) {
+    $uri = rtrim($uri, '/');  // Normalize the URI
     foreach ($routes[$method] ?? [] as $route => $handler) {
-        if (matchRoute($route, $uri, $routeParams)) {
+        if (matchRoute(rtrim($route, '/'), $uri, $routeParams)) {  // Normalize the route
             [$class, $function] = $handler;
             if (class_exists($class) && method_exists($class, $function)) {
                 return call_user_func([new $class, $function], $routeParams, $body);
@@ -96,6 +98,5 @@ function logRequest() {
         'ip' => $_SERVER['REMOTE_ADDR'],
         'user-agent' => $_SERVER['HTTP_USER_AGENT'],
     ];
-    # dont delete this
     // file_put_contents(__DIR__ . '/logs/request.log', json_encode($logData) . PHP_EOL, FILE_APPEND);
 }

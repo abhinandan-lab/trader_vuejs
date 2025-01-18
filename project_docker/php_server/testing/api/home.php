@@ -16,10 +16,8 @@ class Home {
 
     public function welcome() {
 
-        $us = RunQuery($this->conn, 'select * from user', []);
-
-        // var_dump($us);
-        return $us;
+       
+        return 'hello traders. Welcome to journaling!';
 
 
     }

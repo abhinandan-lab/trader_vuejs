@@ -1,6 +1,5 @@
 <script setup>
 import { onMounted, reactive, ref, provide } from 'vue';
-import Header from '@/components/Header.vue';
 import { RouterView } from 'vue-router';
 
 
@@ -18,6 +17,5 @@ onMounted(() => {
 </script>
 
 <template>
-  <Header />
   <RouterView />
 </template>

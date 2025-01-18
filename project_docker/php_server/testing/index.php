@@ -32,8 +32,11 @@ $routes = [
     'GET' => [
         '/' => ['home', 'welcome'],
     ],
+
+    
     'POST' => [
         '/login' => ['auth', 'login'],
+        '/register' => ['auth', 'register'],
     ],
     'DELETE' => [],
 ];

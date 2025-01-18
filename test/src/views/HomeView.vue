@@ -1,5 +1,5 @@
 <script setup>
-import Login from '@/components/login.vue';
+import Settings from '@/components/settings.vue';
 import Header from '@/components/Header.vue';
 </script>
 
@@ -7,6 +7,5 @@ import Header from '@/components/Header.vue';
 
 <template>
     <Header />
-    <Login />
-
+    <Settings />
 </template>

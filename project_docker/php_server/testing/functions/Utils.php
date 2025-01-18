@@ -97,10 +97,11 @@ function CreateTables($conn, $tableArr)
 }
 
 
+
 function insertSeeds($conn, $dataArr) {
     foreach ($dataArr as $tableName => $rows) {
-
-        $columns = null;
+        // Get the first row to extract column names
+        $columns = implode(', ', array_keys($rows[0]));
         $queryTemplate = "INSERT INTO $tableName ($columns) VALUES ";
 
         $values = [];

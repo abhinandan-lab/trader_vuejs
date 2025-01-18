@@ -1,6 +1,5 @@
 <script setup>
-import { onMounted } from 'vue';
-import { inject } from 'vue';
+import { onMounted, inject } from 'vue';
 
 const themeData_local = inject('themeData');
 

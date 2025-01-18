@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onBeforeMount } from 'vue';
+import { API_BASE_URL } from '@/config/config';
+import { getCookie } from '@/config/config';
+import { useRouter } from 'vue-router';
+
 
 // Reactive state for form data
 const email = ref('');
@@ -7,12 +11,25 @@ const password = ref('');
 const confirmPassword = ref('');
 const isRegistering = ref(false); // Tracks whether it's login or register mode
 const isPasswordVisible = ref(false);
-const errorMessage = ref('');
-const successMessage = ref('');
+const username = ref('');
+
 
 const selectedFile = ref(null);
 const previewImage = ref(null);
 const fileInput = ref(null);
+
+
+const validMessage = ref({ type: '', content: '' });
+const router = useRouter();
+
+
+// On page load, check if the session cookie exists
+onBeforeMount(() => {
+  const sessionCookie = getCookie('session');
+  if (sessionCookie) {
+    router.push('/home'); // Redirect to home if session exists
+  }
+});
 
 // Toggle password visibility
 const togglePasswordVisibility = () => {
@@ -27,8 +44,7 @@ const toggleForm = () => {
 
 // Clear messages
 const clearMessages = () => {
-  errorMessage.value = '';
-  successMessage.value = '';
+  validMessage.value = { type: '', content: '' };
 };
 
 // Handle form submission
@@ -36,34 +52,60 @@ const handleSubmit = async () => {
   clearMessages();
 
   if (!email.value || !password.value) {
-    errorMessage.value = 'Email and password are required!';
+    validMessage.value = { type: 'error', content: 'Email and password are required!' };
     return;
   }
 
   if (isRegistering.value && password.value !== confirmPassword.value) {
-    errorMessage.value = 'Passwords do not match!';
+    validMessage.value = { type: 'error', content: 'Passwords do not match!' };
     return;
   }
 
-  const endpoint = isRegistering.value ? '/api/register' : '/api/login';
+  const endpoint = isRegistering.value ? `${API_BASE_URL}/register` : `${API_BASE_URL}/login`;
+
+  // Create a FormData object
+  const formData = new FormData();
+  formData.append('email', email.value);
+  formData.append('password', password.value);
+  if (isRegistering) {
+    formData.append('username', username.value);
+    if (selectedFile.value) {
+      formData.append('profileImage', selectedFile.value);
+    }
+  }
+
+  console.log(formData);
 
   try {
     const response = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email.value, password: password.value }),
+      body: formData,
     });
 
     const result = await response.json();
+    console.log(result);
+
+    validMessage.value = { type: result.status, content: result.message };
+    console.log('settiing coolke');
+    console.log(!isRegistering);
+    // console.log(!isRegistering && result.status === 'success')
+    if (isRegistering && result.status === 'success') {
+
+      document.cookie = `session=${result.session_token}; path=/`; // Set session cookie
+
+    }
+
+
+
+
     if (!response.ok) throw new Error(result.message || 'Something went wrong!');
 
-    successMessage.value = isRegistering.value
-      ? 'Registration successful! You can now log in.'
-      : 'Login successful!';
   } catch (err) {
-    errorMessage.value = err.message;
+    validMessage.value = { type: 'error', content: err.message };
   }
 };
+
+
 
 
 
@@ -89,6 +131,8 @@ const handleFileChange = (event) => {
 </script>
 
 <template>
+
+  abcd@aa.com
   <div class="full_width">
     <div class="register bg_card">
       <h1>{{ isRegistering ? 'Register' : 'Login' }}</h1>
@@ -98,14 +142,23 @@ const handleFileChange = (event) => {
         <div class="right">
           <div class="form_control">
             <div class="profile_circle">
-              <img  :src="previewImage || 'https://placehold.co/150'"  alt="profile pic">
-              <input style="display: none;" id="profile-pic" type="file" accept="image/*" ref="fileInput" @change="handleFileChange" hidden />
-              <button @click="triggerFileInput" v-if="isRegistering" class="edit btn-common"><i class="pi pi-pencil"></i></button>
+              <img :src="previewImage || 'https://placehold.co/150'" alt="profile pic">
+              <input style="display: none;" id="profile-pic" type="file" accept="image/*" ref="fileInput"
+                @change="handleFileChange" hidden />
+              <button @click="triggerFileInput" v-if="isRegistering" class="edit btn-common"><i
+                  class="pi pi-pencil"></i></button>
             </div>
           </div>
         </div>
         <div class="left">
 
+
+
+
+          <div v-if="isRegistering" class="form_control">
+            <label for="confirm-password">Username</label>
+            <input v-model="username" type="text" placeholder="Enter a unique username" required />
+          </div>
 
           <div class="form_control">
             <label for="email">Email</label>
@@ -154,23 +207,20 @@ const handleFileChange = (event) => {
       </div>
 
       <!-- Display messages -->
-      <div v-if="errorMessage" class="error_message">
-        {{ errorMessage }}
-      </div>
-      <div v-if="successMessage" class="success_message">
-        {{ successMessage }}
+      <div v-if="validMessage" :class="validMessage.type">
+        {{ validMessage.content }}
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.error_message {
+.error {
   color: red;
   text-align: center;
 }
 
-.success_message {
+.success {
   color: green;
   text-align: center;
 }
@@ -245,6 +295,8 @@ const handleFileChange = (event) => {
   img {
     border-radius: 50%;
     width: 85%;
+    aspect-ratio: 1;
+    object-fit: contain;
   }
 
   button {

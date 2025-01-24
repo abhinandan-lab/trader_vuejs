@@ -8,6 +8,7 @@ class Auth {
         // Include the connection file
         require_once __DIR__ . '/../config/connection.php';
         require_once __DIR__ . '/../functions/Utils.php';
+        require_once __DIR__ . '/../functions/helpers.php';
 
         $this->conn = $conn;
     }
@@ -54,10 +55,7 @@ class Auth {
                 'message' => 'Incorrect password.'
             ];
         }
-    
-        // Generate a session token or JWT for authentication (optional)
-        // Example: Generate a session token
-        $token = bin2hex(random_bytes(16));
+
     
         // Return a successful login response
         return [
@@ -67,7 +65,7 @@ class Auth {
                 'id' => $userRow['id'],
                 'email' => $userRow['email']
             ],
-            'token' => $token // Include token if using session-based or token-based auth
+            'token' => $userRow['cookie_token'] // Include token if using session-based or token-based auth
         ];
     }
     
@@ -137,17 +135,26 @@ class Auth {
     
         // Insert user data into the database
         try {
-            RunQuery($this->conn, 'INSERT INTO user (email, password, username, profilePic) VALUES (?, ?, ?, ?)', [
+
+
+            $token = createMd5OfRandomString();
+
+
+
+
+            RunQuery($this->conn, 'INSERT INTO user (email, password, username, profilePic, cookie_token) VALUES (?, ?, ?, ?, ?)', [
                 $email,
                 $hashedPassword,
                 $username,
-                $profilePicPath
+                $profilePicPath,
+                $token,
             ]);
     
             return [
                 'status' => 'success',
                 'message' => 'User registered successfully, please log in.',
-                'profilePic' => $profilePicPath
+                // 'profilePic' => $profilePicPath,
+                // 'token' => $token,
             ];
         } catch (PDOException $e) {
             return [

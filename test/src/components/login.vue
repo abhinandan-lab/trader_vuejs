@@ -1,53 +1,111 @@
+<template>
+  <div class="full_width">
+    <div class="register bg_card">
+      <h1>{{ isRegistering ? 'Register' : 'Login' }}</h1>
+      <div class="form_div">
+        <div class="right">
+          <div class="form_control">
+            <div class="profile_circle">
+              <img :src="previewImage || 'https://placehold.co/150'" alt="profile pic">
+              <input style="display: none;" id="profile-pic" type="file" accept="image/*" ref="fileInput"
+                @change="handleFileChange" hidden />
+              <button @click="triggerFileInput" v-if="isRegistering" class="edit btn-common">
+                <i class="pi pi-pencil"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="left">
+          <div v-if="isRegistering" class="form_control">
+            <label for="confirm-password">Username</label>
+            <input v-model="username" type="text" placeholder="Enter a unique username" required />
+          </div>
+          <div class="form_control">
+            <label for="email">Email</label>
+            <input v-model="email" type="email" placeholder="Enter your email" required />
+          </div>
+          <div class="form_control">
+            <label for="password">Password</label>
+            <div class="password_flex">
+              <input v-model="password" :type="isPasswordVisible ? 'text' : 'password'"
+                placeholder="Enter your password" required />
+              <button @click.prevent="togglePasswordVisibility" class="btn-common">
+                <i :class="isPasswordVisible ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
+              </button>
+            </div>
+          </div>
+          <div v-if="isRegistering" class="form_control">
+            <label for="confirm-password">Confirm Password</label>
+            <div class="password_flex">
+              <input v-model="confirmPassword" :type="isPasswordVisible ? 'text' : 'password'"
+                placeholder="Confirm your password" required />
+            </div>
+          </div>
+          <div class="form_control">
+            <div class="submit_div">
+              <button @click="handleSubmit" class="btn-primary" :disabled="isLoading">
+                {{ isRegistering ? 'Register' : 'Login' }}
+              </button>
+            </div>
+          </div>
+          <div class="form_control">
+            <p>
+              {{ isRegistering ? 'Already have an account?' : "Don't have an account?" }}
+              <a href="#" @click.prevent="toggleForm">
+                {{ isRegistering ? 'Login' : 'Register' }}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Display messages -->
+      <div v-if="validMessage.content" :class="validMessage.type">
+        {{ validMessage.content }}
+      </div>
+    </div>
+  </div>
+</template>
+
 <script setup>
 import { ref, onBeforeMount } from 'vue';
-import { API_BASE_URL } from '@/config/config';
-import { getCookie } from '@/config/config';
+import { API_BASE_URL, getCookie, setCookie } from '@/config/config';
 import { useRouter } from 'vue-router';
 
-
-// Reactive state for form data
 const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
-const isRegistering = ref(false); // Tracks whether it's login or register mode
+const isRegistering = ref(false);
 const isPasswordVisible = ref(false);
 const username = ref('');
-
 
 const selectedFile = ref(null);
 const previewImage = ref(null);
 const fileInput = ref(null);
 
-
 const validMessage = ref({ type: '', content: '' });
+const isLoading = ref(false);
 const router = useRouter();
 
-
-// On page load, check if the session cookie exists
 onBeforeMount(() => {
   const sessionCookie = getCookie('session');
   if (sessionCookie) {
-    router.push('/home'); // Redirect to home if session exists
+    router.push('/home');
   }
 });
 
-// Toggle password visibility
 const togglePasswordVisibility = () => {
   isPasswordVisible.value = !isPasswordVisible.value;
 };
 
-// Toggle between login and register forms
 const toggleForm = () => {
   isRegistering.value = !isRegistering.value;
   clearMessages();
 };
 
-// Clear messages
 const clearMessages = () => {
   validMessage.value = { type: '', content: '' };
 };
 
-// Handle form submission
 const handleSubmit = async () => {
   clearMessages();
 
@@ -63,64 +121,51 @@ const handleSubmit = async () => {
 
   const endpoint = isRegistering.value ? `${API_BASE_URL}/register` : `${API_BASE_URL}/login`;
 
-  // Create a FormData object
   const formData = new FormData();
   formData.append('email', email.value);
   formData.append('password', password.value);
-  if (isRegistering) {
+  if (isRegistering.value) {
     formData.append('username', username.value);
     if (selectedFile.value) {
       formData.append('profileImage', selectedFile.value);
     }
   }
 
-  console.log(formData);
-
   try {
+    isLoading.value = true;
     const response = await fetch(endpoint, {
       method: 'POST',
       body: formData,
     });
 
     const result = await response.json();
-    console.log(result);
-
     validMessage.value = { type: result.status, content: result.message };
-    console.log('settiing coolke');
-    console.log(!isRegistering);
-    // console.log(!isRegistering && result.status === 'success')
-    if (isRegistering && result.status === 'success') {
 
-      document.cookie = `session=${result.session_token}; path=/`; // Set session cookie
-
+    if (result.status === 'success') {
+      // document.cookie = `session=${result.token}; path=/`;
+      // Example usage
+      setCookie("session", result.token, 30);
+      if (!isRegistering.value) {
+        router.push({ name: 'home' });
+      }
     }
 
-
-
-
     if (!response.ok) throw new Error(result.message || 'Something went wrong!');
-
   } catch (err) {
     validMessage.value = { type: 'error', content: err.message };
+  } finally {
+    isLoading.value = false;
   }
 };
 
-
-
-
-
-// Trigger file input click
 const triggerFileInput = () => {
   fileInput.value.click();
 };
 
-// Handle file selection
 const handleFileChange = (event) => {
   const file = event.target.files[0];
   if (file) {
     selectedFile.value = file;
-
-    // Create a preview URL for the selected file
     const reader = new FileReader();
     reader.onload = (e) => {
       previewImage.value = e.target.result;
@@ -130,89 +175,6 @@ const handleFileChange = (event) => {
 };
 </script>
 
-<template>
-
-  abcd@aa.com
-  <div class="full_width">
-    <div class="register bg_card">
-      <h1>{{ isRegistering ? 'Register' : 'Login' }}</h1>
-
-      <div class="form_div">
-
-        <div class="right">
-          <div class="form_control">
-            <div class="profile_circle">
-              <img :src="previewImage || 'https://placehold.co/150'" alt="profile pic">
-              <input style="display: none;" id="profile-pic" type="file" accept="image/*" ref="fileInput"
-                @change="handleFileChange" hidden />
-              <button @click="triggerFileInput" v-if="isRegistering" class="edit btn-common"><i
-                  class="pi pi-pencil"></i></button>
-            </div>
-          </div>
-        </div>
-        <div class="left">
-
-
-
-
-          <div v-if="isRegistering" class="form_control">
-            <label for="confirm-password">Username</label>
-            <input v-model="username" type="text" placeholder="Enter a unique username" required />
-          </div>
-
-          <div class="form_control">
-            <label for="email">Email</label>
-            <input v-model="email" type="email" placeholder="Enter your email" required />
-          </div>
-
-          <div class="form_control">
-            <label for="password">Password</label>
-            <div class="password_flex">
-              <input v-model="password" :type="isPasswordVisible ? 'text' : 'password'"
-                placeholder="Enter your password" required />
-              <button @click.prevent="togglePasswordVisibility" class="btn-common">
-                <i :class="isPasswordVisible ? 'pi pi-eye-slash' : 'pi pi-eye'"></i>
-              </button>
-            </div>
-          </div>
-
-          <div v-if="isRegistering" class="form_control">
-            <label for="confirm-password">Confirm Password</label>
-            <div class="password_flex">
-              <input v-model="confirmPassword" :type="isPasswordVisible ? 'text' : 'password'"
-                placeholder="Confirm your password" required />
-            </div>
-          </div>
-
-          <div class="form_control">
-            <div class="submit_div">
-              <button @click="handleSubmit" class="btn-primary">
-                {{ isRegistering ? 'Register' : 'Login' }}
-              </button>
-            </div>
-          </div>
-
-          <div class="form_control">
-            <p class="">
-              {{ isRegistering
-                ? 'Already have an account?'
-                : "Don't have an account?" }}
-              <a href="#" @click.prevent="toggleForm">
-                {{ isRegistering ? 'Login' : 'Register' }}
-              </a>
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Display messages -->
-      <div v-if="validMessage" :class="validMessage.type">
-        {{ validMessage.content }}
-      </div>
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .error {
@@ -241,21 +203,15 @@ const handleFileChange = (event) => {
 
   .right {
     width: 35%;
-    /* background-color: red; */
   }
-
 
   .left {
     flex-grow: 1;
   }
 }
 
-
 .submit_div {
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
-
 
   .btn-primary {
     padding-left: 2rem;
@@ -273,23 +229,17 @@ const handleFileChange = (event) => {
   border-radius: 10px;
   margin-top: 2rem;
 
-
   h1 {
     text-align: center;
     color: var(--text-color);
   }
-
 }
-
-
 
 .profile_circle {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: fit-content; */
   margin: auto;
-
   position: relative;
 
   img {
@@ -300,11 +250,9 @@ const handleFileChange = (event) => {
   }
 
   button {
-
     position: absolute;
     right: 1.5rem;
     bottom: 0;
-
   }
 }
 </style>

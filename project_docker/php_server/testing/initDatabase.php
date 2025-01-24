@@ -38,6 +38,7 @@ $tables = [
         " id INT NOT NULL AUTO_INCREMENT PRIMARY KEY",
         " username VARCHAR(120)",
         " email VARCHAR(120)",
+        " cookie_token VARCHAR(255)",
         " password VARCHAR(512)",
         " profilePic VARCHAR(512)",
         " created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",

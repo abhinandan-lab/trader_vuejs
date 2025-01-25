@@ -31,6 +31,7 @@ require_once __DIR__ . '/api/auth.php';
 $routes = [
     'GET' => [
         '/' => ['home', 'welcome'],
+        '/userData/{session}' => ['auth', 'userDetailBySession'],
     ],
 
     
@@ -50,6 +51,11 @@ $routes = [
 
 
 $routes = prependBaseFolder($routes);
+
+
+
+
+// print_r($routes);
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $requestUri = parseEndpoint($_SERVER['REQUEST_URI']) ?: BASEFOLDER;
 $requestBody = json_decode(file_get_contents('php://input'), true);
@@ -73,6 +79,8 @@ function handleRequest($routes, $method, $uri, $body, &$routeParams) {
     http_response_code(404);
     return ["error" => "Endpoint not found"];
 }
+
+
 
 function matchRoute($route, $uri, &$params) {
     $pattern = preg_replace('/\{(\w+)\}/', '(?P<\1>[^/]+)', $route);

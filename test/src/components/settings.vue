@@ -1,28 +1,53 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, inject, onMounted } from 'vue';
+import { API_BASE_URL, getCookie } from '@/config/config';
+import axios from 'axios';
+
+const userDetail_local = inject('userDetail');
 
 // Reactive state for form data
-const email = ref('');
+const email = ref(userDetail_local.email);
+const username = ref(userDetail_local.username);
+const previewImage = ref(`${API_BASE_URL}/${userDetail_local.profilePic}`);
+const oldPassword = ref('');
 const password = ref('');
 const confirmPassword = ref('');
-const isRegistering = ref(false); // Tracks whether it's login or register mode
 const isPasswordVisible = ref(false);
 const errorMessage = ref('');
 const successMessage = ref('');
-
 const selectedFile = ref(null);
-const previewImage = ref(null);
 const fileInput = ref(null);
+
+// Function to fetch user data if not already available
+const callApi = async () => {
+  try {
+    let mycookie = getCookie('session');
+    const response = await axios.get(`${API_BASE_URL}/userData/${mycookie}`);
+
+    const user = response.data.user;
+    userDetail_local.profilePic = user.profilePic;
+    userDetail_local.username = user.username;
+    userDetail_local.id = user.id;
+    userDetail_local.email = user.email;
+
+    email.value = user.email;
+    username.value = user.username;
+    previewImage.value = `${API_BASE_URL}/${user.profilePic}`;
+  } catch (error) {
+    console.error('Error fetching API:', error);
+  }
+};
+
+// Ensure API is called only if user data is not already available
+onMounted(() => {
+  if (!userDetail_local.id) {
+    callApi();
+  }
+});
 
 // Toggle password visibility
 const togglePasswordVisibility = () => {
   isPasswordVisible.value = !isPasswordVisible.value;
-};
-
-// Toggle between login and register forms
-const toggleForm = () => {
-  isRegistering.value = !isRegistering.value;
-  clearMessages();
 };
 
 // Clear messages
@@ -34,38 +59,37 @@ const clearMessages = () => {
 // Handle form submission
 const handleSubmit = async () => {
   clearMessages();
-
-  if (!email.value || !password.value) {
-    errorMessage.value = 'Email and password are required!';
+  if (password.value !== confirmPassword.value) {
+    errorMessage.value = "Passwords do not match!";
     return;
   }
-
-  if (isRegistering.value && password.value !== confirmPassword.value) {
-    errorMessage.value = 'Passwords do not match!';
-    return;
-  }
-
-  const endpoint = isRegistering.value ? '/api/register' : '/api/login';
 
   try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email.value, password: password.value }),
+    const formData = new FormData();
+    formData.append('email', email.value);
+    formData.append('username', username.value);
+    formData.append('oldPassword', oldPassword.value);
+    formData.append('password', password.value);
+    if (selectedFile.value) {
+      formData.append('profilePic', selectedFile.value);
+    }
+
+    const response = await axios.put(`${API_BASE_URL}/updateUser`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
     });
 
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.message || 'Something went wrong!');
+    userDetail_local.email = response.data.email;
+    userDetail_local.username = response.data.username;
+    userDetail_local.profilePic = response.data.profilePic;
 
-    successMessage.value = isRegistering.value
-      ? 'Registration successful! You can now log in.'
-      : 'Login successful!';
-  } catch (err) {
-    errorMessage.value = err.message;
+    successMessage.value = "Settings updated successfully!";
+  } catch (error) {
+    errorMessage.value = "Error updating settings!";
+    console.error('Error updating API:', error);
   }
 };
-
-
 
 // Trigger file input click
 const triggerFileInput = () => {
@@ -87,6 +111,7 @@ const handleFileChange = (event) => {
   }
 };
 </script>
+
 
 <template>
   <div class="full_width">
@@ -114,12 +139,12 @@ const handleFileChange = (event) => {
 
           <div class="form_control">
             <label for="text"><small> Username </small> </label>
-            <input  type="text" placeholder="Enter your username" />
+            <input v-model="username" type="text" placeholder="Enter your username" />
           </div>
 
           <div class="form_control">
             <label for="old_pass"><small> Old Password </small> </label>
-            <input  type="email" placeholder="Enter your email" required />
+            <input type="email" placeholder="Enter your email" required />
           </div>
 
           <div class="form_control">
@@ -148,52 +173,34 @@ const handleFileChange = (event) => {
 
 
           <div style="display: none;" class="empty_strategy">
-              <div class="iconbox">
-                <i class="pi pi-exclamation-circle" style="font-size: 2rem; font-weight: 100;"></i>
-                <span class="text_light"> No Strategies created</span>
-              </div>
-               <!-- <p class="text_light"> <small><i class="pi pi-plus" ></i> Add new Strategy </small> </p> -->
+            <div class="iconbox">
+              <i class="pi pi-exclamation-circle" style="font-size: 2rem; font-weight: 100;"></i>
+              <span class="text_light"> No Strategies created</span>
+            </div>
+            <!-- <p class="text_light"> <small><i class="pi pi-plus" ></i> Add new Strategy </small> </p> -->
           </div>
 
 
           <div class="strategy_list">
             <div class="item ">
               <p class="name">my strategy name</p>
-              <button class="btn-common">   <i class="pi pi-trash"></i> </button>
+              <button class="btn-common"> <i class="pi pi-trash"></i> </button>
             </div>
 
-            <div class="item ">
-              <p class="name">my strategy name</p>
-              <button class="btn-common">   <i class="pi pi-trash"></i> </button>
-            </div>
-            <div class="item ">
-              <p class="name">my strategy name</p>
-              <button class="btn-common">   <i class="pi pi-trash"></i> </button>
-            </div>
 
-            <div class="item ">
-              <p class="name">my strategy name</p>
-              <button class="btn-common">   <i class="pi pi-trash"></i> </button>
-            </div>
-
-            <div class="item ">
-              <p class="name">my strategy name</p>
-              <button class="btn-common">   <i class="pi pi-trash"></i> </button>
-            </div>
           </div>
 
           <div class="confirm_delete">
             <p>Confirm Delete</p>
             <span>random text 6 charchter</span>
             <div class="form_control">
-            <div class="password_flex">
-              <input  type="text"
-                placeholder="Enter above code" required />
-              <button class="btn-common">
-                Confirm
-              </button>
+              <div class="password_flex">
+                <input type="text" placeholder="Enter above code" required />
+                <button class="btn-common">
+                  Confirm
+                </button>
+              </div>
             </div>
-          </div>
           </div>
 
         </div>
@@ -212,8 +219,6 @@ const handleFileChange = (event) => {
 </template>
 
 <style scoped>
-
-
 .confirm_delete {
   border: 1px solid rgb(230, 161, 0);
   margin-top: 0.4rem;
@@ -239,7 +244,7 @@ const handleFileChange = (event) => {
   display: flex;
   gap: 0.6rem;
   flex-direction: column;
-  
+
   .item {
     border: 1px solid var(--divider-color);
     border-radius: 4px;
@@ -259,6 +264,7 @@ const handleFileChange = (event) => {
 
   .item:hover {
     border: 1px solid #007bff;
+
     p {
       color: #007bff;
     }
@@ -278,8 +284,8 @@ const handleFileChange = (event) => {
   /* border: 1px solid black; */
   padding: 2rem;
   font-family: "Quicksand", serif;
-  
-  
+
+
   .iconbox {
     gap: 0.6rem;
     justify-content: center;

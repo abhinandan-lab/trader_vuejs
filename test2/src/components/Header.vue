@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, inject } from 'vue';
-
+import { currentUser } from '@/config/userStatus';
 import { API_BASE_URL, getCookie } from '@/config/config';
-const userDetail_local = inject('userDetail');
+// const userDetail_local = inject('userDetail');
 
 const themeData_local = inject('themeData');
 
@@ -25,7 +25,7 @@ onMounted(() => {
 
 <template>
   <div class="full_width bg_card">
-    <div class="top_header">
+    <div v-if="!currentUser.isLoggedIn" class="top_header">
       <p>{{ welcome_msg }}</p>
       <div class="toggleUI">
         <div class="toggle-container">
@@ -39,54 +39,53 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </div>
 
 
+    <!-- either this header or above header based on auth -->
+    <div v-if="currentUser.isLoggedIn" class="top_header ">
+      <!-- userDetail_local.username  -->
+      <p> Welcome {{  currentUser.username}} </p>
 
-  {{ userDetail_local }}
+      <button class="btn-primary">Add New trade</button>
 
-  <div class="top_header ">
+      <div class="logged_user">
 
-    <p> Welcome {{ userDetail_local.username }} </p>
+        <button class="btn-common">settings</button>
 
-    <button class="btn-primary">Add New trade</button>
+        <button class="btn-common">logout</button>
+        <!-- userDetail_local.profilePic -->
+        <div class="profilepic">
 
-    <div class="logged_user">
+          <img :src="API_BASE_URL + '/' +  currentUser.profilePic || 'https://placehold.co/30'" alt="user profile">
 
-      <button class="btn-common">settings</button>
+        </div>
 
-      <button class="btn-common">logout</button>
+        <div class="themebox">
 
-      <div class="profilepic">
+          <!-- dont delete the below empty span we need it to show border left -->
 
-        <img :src="API_BASE_URL + '/' + userDetail_local.profilePic || 'https://placehold.co/30'" alt="user profile">
+          <!-- <span></span> -->
 
-      </div>
+          <!-- <span>icon</span> -->
 
-      <div class="themebox">
+          <div class="toggleUI">
 
-        <!-- dont delete the below empty span we need it to show border left -->
+            <div class="toggle-container">
 
-        <!-- <span></span> -->
+              <input type="checkbox" id="toggle" class="toggle-checkbox" v-model="themeData_local.isDark"
+                @click="toggleTheme" />
 
-        <!-- <span>icon</span> -->
+              <label for="toggle" class="toggle-label">
 
-        <div class="toggleUI">
+                <span class="toggle-circle">
 
-          <div class="toggle-container">
+                  <i :class="themeData_local.isDark ? 'pi pi-moon' : 'pi pi-sun'"></i>
 
-            <input type="checkbox" id="toggle" class="toggle-checkbox" v-model="themeData_local.isDark"
-              @click="toggleTheme" />
+                </span>
 
-            <label for="toggle" class="toggle-label">
+              </label>
 
-              <span class="toggle-circle">
-
-                <i :class="themeData_local.isDark ? 'pi pi-moon' : 'pi pi-sun'"></i>
-
-              </span>
-
-            </label>
+            </div>
 
           </div>
 
@@ -96,7 +95,12 @@ onMounted(() => {
 
     </div>
 
+
   </div>
+
+  {{ currentUser }}
+
+
 </template>
 
 
@@ -112,13 +116,13 @@ onMounted(() => {
 
 .profilepic {
 
-img {
+  img {
 
-width: 100%;
+    width: 100%;
 
-/* height: 100; */
+    /* height: 100; */
 
-}
+  }
 
 }
 </style>

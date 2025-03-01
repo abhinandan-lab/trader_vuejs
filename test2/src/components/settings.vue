@@ -2,13 +2,17 @@
 import { ref, inject, onMounted } from 'vue';
 import { API_BASE_URL, getCookie } from '@/config/config';
 import axios from 'axios';
+import { currentUser } from '@/config/userStatus';
 
-const userDetail_local = inject('userDetail');
+// const userDetail_local = inject('userDetail');
 
 // Reactive state for form data
-const email = ref(userDetail_local.email);
-const username = ref(userDetail_local.username);
-const previewImage = ref(`${API_BASE_URL}/${userDetail_local.profilePic}`);
+// const email = ref(userDetail_local.email);
+const email = ref(currentUser.userEmail);
+// const username = ref(userDetail_local.username);
+const username = ref(currentUser.userName);
+// const previewImage = ref(`${API_BASE_URL}/${userDetail_local.profilePic}`);
+const previewImage = ref(`${API_BASE_URL}/${currentUser.profilePic}`);
 const oldPassword = ref('');
 const password = ref('');
 const confirmPassword = ref('');
@@ -29,10 +33,15 @@ const callApi = async () => {
     const response = await axios.get(`${API_BASE_URL}/userData/${mycookie}`);
 
     const user = response.data.user;
-    userDetail_local.profilePic = user.profilePic;
-    userDetail_local.username = user.username;
-    userDetail_local.id = user.id;
-    userDetail_local.email = user.email;
+    // userDetail_local.profilePic = user.profilePic;
+    // userDetail_local.username = user.username;
+    // userDetail_local.id = user.id;
+    // userDetail_local.email = user.email;
+    currentUser.profilePic = user.profilePic;
+    currentUser.userName = user.username;
+    currentUser.userId = user.id;
+    currentUser.userEmail = user.email
+
 
     email.value = user.email;
     username.value = user.username;
@@ -44,7 +53,7 @@ const callApi = async () => {
 
 // Ensure API is called only if user data is not already available
 onMounted(() => {
-  if (!userDetail_local.id) {
+  if (!currentUser.userId ) {
     callApi();
   }
 });
@@ -84,9 +93,9 @@ const handleSubmit = async () => {
       }
     });
 
-    userDetail_local.email = response.data.email;
-    userDetail_local.username = response.data.username;
-    userDetail_local.profilePic = response.data.profilePic;
+    // userDetail_local.email = response.data.email;
+    // userDetail_local.username = response.data.username;
+    // userDetail_local.profilePic = response.data.profilePic;
 
     successMessage.value = "Settings updated successfully!";
   } catch (error) {

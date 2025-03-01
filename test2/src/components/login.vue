@@ -70,6 +70,7 @@
 import { ref, onBeforeMount } from 'vue';
 import { API_BASE_URL, getCookie, setCookie } from '@/config/config';
 import { useRouter } from 'vue-router';
+import { currentUser } from '@/config/userStatus';
 
 const email = ref('');
 const password = ref('');
@@ -139,12 +140,21 @@ const handleSubmit = async () => {
     });
 
     const result = await response.json();
+    console.log(result, 'rrrrrrrr')
     validMessage.value = { type: result.status, content: result.message };
 
     if (result.status === 'success') {
       // document.cookie = `session=${result.token}; path=/`;
       // Example usage
-      setCookie("session", result.token, 30);
+
+      currentUser.isLoggedIn = true;
+      currentUser.userId = result.user.id;
+      currentUser.userEmail = result.user.email;
+      currentUser.username = '';
+      currentUser.profilePic = '';
+      currentUser.selectedTheme = '';
+
+      setCookie("session", result.token, 30); // 30 days
       if (!isRegistering.value) {
         router.push({ name: 'home' });
       }

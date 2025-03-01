@@ -3,8 +3,8 @@ import Settings from '@/components/settings.vue';
 import { API_BASE_URL, getCookie } from '@/config/config';
 import axios from 'axios';
 import { inject, onMounted } from 'vue';
-
-const userDetail_local = inject('userDetail');
+import { currentUser } from '@/config/userStatus';
+// const userDetail_local = inject('userDetail');
 
 const callApi = async () => {
   try {
@@ -18,17 +18,31 @@ const callApi = async () => {
     // console.log(response);
 
     let user = response.data.user;
-    userDetail_local.profilePic = user.profilePic;
-    userDetail_local.username = user.username;
-    userDetail_local.id = user.id;
-    userDetail_local.email = user.email;
+    // userDetail_local.profilePic = user.profilePic;
+    // userDetail_local.username = user.username;
+    // userDetail_local.id = user.id;
+    // userDetail_local.email = user.email;
+
+
+    currentUser.isLoggedIn = true;
+    currentUser.userId = user.id;
+    currentUser.userEmail = user.email;
+    currentUser.userName = user.username;
+    currentUser.profilePic = user.profilePic;
+    currentUser.selectedTheme = user.theme;
+
+    console.log(currentUser);
+    console.log(user);
+
+
+
   } catch (error) {
     console.error('Error fetching API:', error);
   }
 };
 
 onMounted(() => {
-  if(!userDetail_local.id) {
+  if (!currentUser.userId) {
     callApi();
   }
 });

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue';
 import AuthView from '@/views/AuthView.vue';
+import { currentUser } from '@/config/userStatus';
 
 
 // const router = createRouter({
@@ -27,6 +28,7 @@ import AuthView from '@/views/AuthView.vue';
 // Utility function to check authentication
 const isAuthenticated = () => {
   console.log(document.cookie.includes('session'), ': isAuthenticated');
+  currentUser.isLoggedIn = true;
   return document.cookie.includes('session') || localStorage.getItem('session');
 };
 

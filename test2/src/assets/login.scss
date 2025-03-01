@@ -1,0 +1,124 @@
+@import './base.css';
+
+
+
+.form_control {
+    margin-top: 1.4rem;
+}
+
+.top_header {
+    margin-top: 0;
+    width: 100%;
+    padding: 0.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--display_width);
+    margin: auto;
+
+
+    .toggleUI {
+        transform: scale(0.8);
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        width: fit-content;
+    }
+
+    .logged_user {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        margin-top: 0.2rem;
+        margin-bottom: 0.2rem;
+
+        button {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            // margin-right: 0;
+            margin: 0;
+        }
+
+        .profilepic {
+            display: flex;
+            align-items: center;
+
+            img {
+                border-radius: 50%;
+            }
+        }
+
+        .themebox {
+            display: flex;
+            // margin-left: 1.4rem;
+            border-left: 1px solid;
+            padding-left: 0.6rem;
+        }
+    }
+}
+
+
+
+
+
+.password_flex {
+    display: flex;
+
+    button {
+        margin: 0;
+        margin-left: 5px;
+
+        i {
+            font-size: 1rem;
+        }
+    }
+}
+
+
+
+.toggleUI {
+    .toggle-container {
+        display: inline-block;
+        position: relative;
+        width: 50px;
+        height: 25px;
+    }
+
+    .toggle-checkbox {
+        display: none;
+    }
+
+    .toggle-label {
+        background-color: #ccc;
+        border-radius: 25px;
+        cursor: pointer;
+        display: inline-block;
+        height: 100%;
+        position: relative;
+        transition: background-color 0.3s;
+        width: 100%;
+    }
+
+    .toggle-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        border-radius: 50%;
+        height: 21px;
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.3s;
+        width: 21px;
+    }
+
+    .toggle-checkbox:checked+.toggle-label {
+        background-color: #4caf50;
+    }
+
+    .toggle-checkbox:checked+.toggle-label .toggle-circle {
+        transform: translateX(25px);
+    }
+}

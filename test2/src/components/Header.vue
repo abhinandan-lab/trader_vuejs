@@ -1,8 +1,7 @@
 <script setup>
 import { onMounted, inject } from 'vue';
 import { currentUser } from '@/config/userStatus';
-import { API_BASE_URL, getCookie } from '@/config/config';
-// const userDetail_local = inject('userDetail');
+import { API_BASE_URL } from '@/config/config';
 
 const themeData_local = inject('themeData');
 
@@ -43,7 +42,6 @@ onMounted(() => {
 
     <!-- either this header or above header based on auth -->
     <div v-if="currentUser.isLoggedIn" class="top_header ">
-      <!-- userDetail_local.username  -->
       <p> Welcome {{  currentUser.username}} </p>
 
       <button class="btn-primary">Add New trade</button>
@@ -53,7 +51,6 @@ onMounted(() => {
         <button class="btn-common">settings</button>
 
         <button class="btn-common">logout</button>
-        <!-- userDetail_local.profilePic -->
         <div class="profilepic">
 
           <img :src="API_BASE_URL + '/' +  currentUser.profilePic || 'https://placehold.co/30'" alt="user profile">
@@ -98,7 +95,7 @@ onMounted(() => {
 
   </div>
 
-  {{ currentUser }}
+  <!-- {{ currentUser }} -->
 
 
 </template>

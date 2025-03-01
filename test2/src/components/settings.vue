@@ -4,14 +4,9 @@ import { API_BASE_URL, getCookie } from '@/config/config';
 import axios from 'axios';
 import { currentUser } from '@/config/userStatus';
 
-// const userDetail_local = inject('userDetail');
 
-// Reactive state for form data
-// const email = ref(userDetail_local.email);
 const email = ref(currentUser.userEmail);
-// const username = ref(userDetail_local.username);
 const username = ref(currentUser.userName);
-// const previewImage = ref(`${API_BASE_URL}/${userDetail_local.profilePic}`);
 const previewImage = ref(`${API_BASE_URL}/${currentUser.profilePic}`);
 const oldPassword = ref('');
 const password = ref('');
@@ -33,10 +28,6 @@ const callApi = async () => {
     const response = await axios.get(`${API_BASE_URL}/userData/${mycookie}`);
 
     const user = response.data.user;
-    // userDetail_local.profilePic = user.profilePic;
-    // userDetail_local.username = user.username;
-    // userDetail_local.id = user.id;
-    // userDetail_local.email = user.email;
     currentUser.profilePic = user.profilePic;
     currentUser.userName = user.username;
     currentUser.userId = user.id;

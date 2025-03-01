@@ -1,6 +1,6 @@
 import { reactive } from "vue";
 
-// avaialbe on 
+// avaialbe on every view
 export const currentUser = reactive({
   isLoggedIn: false,
   userName: "",

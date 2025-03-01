@@ -182,7 +182,7 @@ class Auth {
         $sessionToken = htmlspecialchars(trim($session), ENT_QUOTES, 'UTF-8');
     
         // Fetch user details from the database using the session token
-        $result = RunQuery($this->conn, 'SELECT id, email, username, profilePic FROM user WHERE cookie_token = ?', [$sessionToken]);
+        $result = RunQuery($this->conn, 'SELECT id, email, username, profilePic, theme FROM user WHERE cookie_token = ?', [$sessionToken]);
     
         // Check if the user exists
         if (empty($result)) {
@@ -202,7 +202,8 @@ class Auth {
                 'id' => $user['id'],
                 'email' => $user['email'],
                 'username' => $user['username'],
-                'profilePic' => $user['profilePic']
+                'profilePic' => $user['profilePic'],
+                'theme' => $user['theme'],
             ]
         ];
     }

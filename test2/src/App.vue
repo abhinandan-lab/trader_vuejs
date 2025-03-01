@@ -4,9 +4,6 @@ import { RouterView } from 'vue-router';
 import { currentUser } from '@/config/userStatus';
 import HeaderVue from '@/components/Header.vue';
 
-// const userDetail = reactive({username: '', profilePic: '', activeStrategy: ''});
-// provide('userDetail', userDetail);
-
 
 const themeData = reactive({ isDark: true });
 provide('themeData', themeData);

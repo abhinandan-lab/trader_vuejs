@@ -2,20 +2,25 @@
 import { ref, inject, onMounted } from 'vue';
 import { API_BASE_URL, getCookie } from '@/config/config';
 import axios from 'axios';
-import { currentUser } from '@/config/userStatus';
+import { currentUser, uiStatus } from '@/config/userStatus';
+
+import loadingButton from '@/components/loadingButton.vue';
 
 
 const email = ref(currentUser.userEmail);
 const username = ref(currentUser.userName);
-const previewImage = ref(`${API_BASE_URL}/${currentUser.profilePic}`);
+const previewImage = ref('');
 const oldPassword = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const isPasswordVisible = ref(false);
-const errorMessage = ref('');
-const successMessage = ref('');
+// const errorMessage = ref('');
+// const successMessage = ref('');
 const selectedFile = ref(null);
 const fileInput = ref(null);
+
+
+const validMessage = ref({ type: '', content: '' });
 
 
 const myStrategies = ref([]);
@@ -28,7 +33,11 @@ const callApi = async () => {
     const response = await axios.get(`${API_BASE_URL}/userData/${mycookie}`);
 
     const user = response.data.user;
+    console.log(user)
     currentUser.profilePic = user.profilePic;
+    if(user.profilePic == null){
+      currentUser.profilePic = 'https://placehold.co/30';
+    }
     currentUser.userName = user.username;
     currentUser.userId = user.id;
     currentUser.userEmail = user.email
@@ -44,7 +53,7 @@ const callApi = async () => {
 
 // Ensure API is called only if user data is not already available
 onMounted(() => {
-  if (!currentUser.userId ) {
+  if (!currentUser.userId) {
     callApi();
   }
 });
@@ -56,15 +65,21 @@ const togglePasswordVisibility = () => {
 
 // Clear messages
 const clearMessages = () => {
-  errorMessage.value = '';
-  successMessage.value = '';
+  validMessage.value = { type: '', content: '' };
 };
 
 // Handle form submission
 const handleSubmit = async () => {
+
+
+  // sets loading true
+  uiStatus.showloading = true;
+
+
   clearMessages();
   if (password.value !== confirmPassword.value) {
     errorMessage.value = "Passwords do not match!";
+    uiStatus.showloading = false;
     return;
   }
 
@@ -78,22 +93,33 @@ const handleSubmit = async () => {
       formData.append('profilePic', selectedFile.value);
     }
 
-    const response = await axios.put(`${API_BASE_URL}/updateUser`, formData, {
+    let mycookie = getCookie('session');
+    const response = await axios.post(`${API_BASE_URL}/updateUser/${mycookie}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
 
-    // userDetail_local.email = response.data.email;
-    // userDetail_local.username = response.data.username;
-    // userDetail_local.profilePic = response.data.profilePic;
+    console.log(response)
+    console.log(response.data)
 
-    successMessage.value = "Settings updated successfully!";
+    validMessage.value.type = response.data.status;
+    validMessage.value.content = response.data.message;
+
+
+    // successMessage.value = "Settings updated successfully!";
+    // validMessage.
+    uiStatus.showloading = false;
   } catch (error) {
+    uiStatus.showloading = false;
     errorMessage.value = "Error updating settings!";
     console.error('Error updating API:', error);
   }
 };
+
+
+
+
 
 // Trigger file input click
 const triggerFileInput = () => {
@@ -120,15 +146,17 @@ const handleFileChange = (event) => {
 <template>
   <div class="full_width">
     <div class="register bg_card">
-      <h1> <span>Settings</span> <button class="btn-common">Save</button></h1>
+      <h1> <span>Settings</span> <button @click="handleSubmit" class="btn-common">
+          <loadingButton :buttonText="'Save'" />
+        </button></h1>
 
       <div class="form_div">
 
         <div class="right">
-
+      {{ previewImage }}
           <div class="form_control prof_div">
             <div class="profile_circle">
-              <img :src="previewImage || 'https://placehold.co/150'" alt="profile pic">
+              <img :src="previewImage" alt="profile pic">
               <input style="display: none;" id="profile-pic" type="file" accept="image/*" ref="fileInput"
                 @change="handleFileChange" hidden />
               <button @click="triggerFileInput" class="edit btn-common"><i class="pi pi-pencil"></i></button>
@@ -212,11 +240,14 @@ const handleFileChange = (event) => {
       </div>
 
       <!-- Display messages -->
-      <div v-if="errorMessage" class="error_message">
+      <!-- <div v-if="errorMessage" class="error_message">
         {{ errorMessage }}
       </div>
       <div v-if="successMessage" class="success_message">
         {{ successMessage }}
+      </div> -->
+      <div :class="`${validMessage.type}_message`">
+        {{ validMessage.content }}
       </div>
     </div>
   </div>
@@ -324,11 +355,13 @@ h1 {
 
 
 .error_message {
+  margin-top: 0.6rem;
   color: red;
   text-align: center;
 }
 
 .success_message {
+  margin-top: 0.6rem;
   color: green;
   text-align: center;
 }

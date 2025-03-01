@@ -53,10 +53,10 @@ onMounted(() => {
         <button class="btn-common">logout</button>
         <div class="profilepic">
 
-          <img :src="API_BASE_URL + '/' +  currentUser.profilePic || 'https://placehold.co/30'" alt="user profile">
+          <img :src="currentUser.getProfilePicUrl()" alt="user profile">
 
         </div>
-
+<!-- {{ currentUser.getProfilePicUrl() }} -->
         <div class="themebox">
 
           <!-- dont delete the below empty span we need it to show border left -->

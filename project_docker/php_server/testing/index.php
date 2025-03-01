@@ -32,12 +32,14 @@ $routes = [
     'GET' => [
         '/' => ['home', 'welcome'],
         '/userData/{session}' => ['auth', 'userDetailBySession'],
+
     ],
 
     
     'POST' => [
         '/login' => ['auth', 'login'],
         '/register' => ['auth', 'register'],
+        '/updateUser/{session}' => ['auth', 'updateUser'],
     ],
     'DELETE' => [],
 ];

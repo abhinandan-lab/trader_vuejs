@@ -7,9 +7,9 @@ import { currentUser, uiStatus } from '@/config/userStatus';
 import loadingButton from '@/components/loadingButton.vue';
 
 
-const email = ref(currentUser.userEmail);
-const username = ref(currentUser.userName);
-const previewImage = ref('');
+const email = ref('');
+const username = ref('');
+const previewImage = ref('https://placehold.co/30');
 const oldPassword = ref('');
 const password = ref('');
 const confirmPassword = ref('');
@@ -33,19 +33,17 @@ const callApi = async () => {
     const response = await axios.get(`${API_BASE_URL}/userData/${mycookie}`);
 
     const user = response.data.user;
-    console.log(user)
-    currentUser.profilePic = user.profilePic;
+    console.log(response)
+    // currentUser.profilePic = user.profilePic;
+    previewImage.value = `${API_BASE_URL}/${user.profilePic}`;
     if(user.profilePic == null){
       currentUser.profilePic = 'https://placehold.co/30';
     }
     currentUser.userName = user.username;
     currentUser.userId = user.id;
     currentUser.userEmail = user.email
+    console.log(currentUser)
 
-
-    email.value = user.email;
-    username.value = user.username;
-    previewImage.value = `${API_BASE_URL}/${user.profilePic}`;
   } catch (error) {
     console.error('Error fetching API:', error);
   }
@@ -239,13 +237,6 @@ const handleFileChange = (event) => {
 
       </div>
 
-      <!-- Display messages -->
-      <!-- <div v-if="errorMessage" class="error_message">
-        {{ errorMessage }}
-      </div>
-      <div v-if="successMessage" class="success_message">
-        {{ successMessage }}
-      </div> -->
       <div :class="`${validMessage.type}_message`">
         {{ validMessage.content }}
       </div>
